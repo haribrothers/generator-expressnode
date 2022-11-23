@@ -1,5 +1,5 @@
-# generator-expressnode [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> A Express Node Generator
+#  🚀 Express-Node-SQLite RestAPI CRUD Code Generator 
+> This will generate a node-express-sqlite RestAPI CRUD application from the provide database schema
 
 ## Installation
 
