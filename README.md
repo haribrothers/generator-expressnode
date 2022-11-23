@@ -1,5 +1,5 @@
-#  🚀 Express-Node-SQLite RestAPI CRUD Code Generator 
-> This will generate a node-express-sqlite RestAPI CRUD application from the provide database schema
+#  🚀 ExpressNode Code Generator 
+> This will generate a node-express Sqlite RestAPI CRUD application from the provide database schema
 
 ## Installation
 
