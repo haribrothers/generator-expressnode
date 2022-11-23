@@ -1,0 +1,25 @@
+const express = require('express');
+const router = express.Router();
+const <%= entityName %>s = require('../services/<%= entityName %>s');
+
+/* GET <%= entityName %> listing. */
+router.get('/', function(req, res, next) {
+  try {
+    res.json(<%= entityName %>s.getMultiple(req.query.page));
+  } catch(err) {
+    console.error(`Error while getting <%= entityName %>s `, err.message);
+    next(err);
+  }
+});
+
+/* POST <%= entityName %> */
+router.post('/', function(req, res, next) {
+  try {
+    res.json(<%= entityName %>s.create(req.body));
+  } catch(err) {
+    console.error(`Error while adding <%= entityName %> `, err.message);
+    next(err);
+  }
+});
+
+module.exports = router;

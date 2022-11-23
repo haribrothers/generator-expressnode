@@ -1,0 +1,56 @@
+const db = require('./db');
+const config = require('../config');
+
+db.run('CREATE TABLE IF NOT EXISTS <%= entityName %>(id INTEGER PRIMARY KEY AUTOINCREMENT, <%= createFields %>)',{});
+
+function getMultiple(page = 1) {
+  const offset = (page - 1) * config.listPerPage;
+  const data = db.query(`SELECT * FROM <%= entityName %> LIMIT ?,?`, [offset, config.listPerPage]);
+  const meta = {page};
+
+  return {
+    data,
+    meta
+  }
+}
+
+function validateCreate(<%= entityName.toLowerCase() %>) {
+  let messages = [];
+
+  console.log(<%= entityName.toLowerCase() %>);
+
+  if (!<%= entityName.toLowerCase() %>) {
+    messages.push('No object is provided');
+  }
+
+  <% entityFields.forEach(field => { %>
+    if (!<%= entityName.toLowerCase() %>.<%= field %>) {
+      messages.push('<%= field %> is empty');
+    }
+  <% }); %>
+
+  if (messages.length) {
+    let error = new Error(messages.join());
+    error.statusCode = 400;
+
+    throw error;
+  }
+}
+
+function create(<%= entityName.toLowerCase() %>Obj) {
+  validateCreate(<%= entityName.toLowerCase() %>Obj);
+  const {<%= entityFields.join(", ") %>} = <%= entityName.toLowerCase() %>Obj;
+  const result = db.run('INSERT INTO <%= entityName.toLowerCase() %> (<%= entityFields.join(", ") %>) VALUES (@<%= entityFields.join(", @") %>)', {<%= entityFields.join(",") %>});
+
+  let message = 'Error in creating <%= entityName.toLowerCase() %>';
+  if (result.changes) {
+    message = '<%= entityName %> created successfully';
+  }
+
+  return {message};
+}
+
+module.exports = {
+  getMultiple,
+  create
+}
