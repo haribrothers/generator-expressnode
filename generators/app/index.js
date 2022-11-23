@@ -35,7 +35,6 @@ module.exports = class extends Generator {
     ];
 
     this.answers = await this.prompt(prompts);
-    this.log(this.answers);
   }
 
   validating() {

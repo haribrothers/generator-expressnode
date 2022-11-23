@@ -71,21 +71,15 @@ added 128 packages, and audited 129 packages in 34s
 found 0 vulnerabilities
 ```
 
-## Getting To Know Yeoman
+The files are created, dependencies installed and ready to start. To run use the app
 
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
+```bash
+sample-express-app % npm start
+(OR)
+sample-express-app % npm run start:dev
+```
 
 ## License
 
 Apache-2.0 © [Hari Prasad]()
 
-
-[npm-image]: https://badge.fury.io/js/generator-expressnode.svg
-[npm-url]: https://npmjs.org/package/generator-expressnode
-[travis-image]: https://travis-ci.com/haribrothers/generator-expressnode.svg?branch=master
-[travis-url]: https://travis-ci.com/haribrothers/generator-expressnode
-[daviddm-image]: https://david-dm.org/haribrothers/generator-expressnode.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/haribrothers/generator-expressnode
